@@ -26,7 +26,7 @@ def compute_ssim(original_path=None, reproduced_path=None, original_image=None, 
 
         # Compute SSIM
         score, _ = ssim(original, reproduced, full=True)
-        print(f"SSIM Score: {score}")
+        return score
 
     except Exception as e:
         print(f"Error processing signature: {str(e)}")
@@ -43,7 +43,8 @@ if __name__ == "__main__":
     orig_path = f"{shared_dir}/unclean_sample.jpg"
     rep_path = f"{shared_dir}/clean_sample.png"
     # using paths
-    compute_ssim(orig_path, rep_path)
+    result = compute_ssim(orig_path, rep_path)
+    print(f"SSIM Score: {result:.4f}")
     # if to use images
     """ original_image = cv2.imread(input_path)
     reproduced_image = cv2.imread(output_path)
