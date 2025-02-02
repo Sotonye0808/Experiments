@@ -19,4 +19,4 @@ The 'evaluation_modules' holds various modules for determining the performance o
 
 ## Contact
 
-For any questions or issues, please contact [Sotonye Dagogo](sotydagz@gmail.com).
+For any questions or issues, please contact [Sotonye Dagogo](mailto:sotydagz@gmail.com).
