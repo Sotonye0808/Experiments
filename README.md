@@ -15,8 +15,8 @@ The 'evaluation_modules' holds various modules for determining the performance o
 ## Usage tips
 
 - You can create a 'testing_images' directory to hold images you wish to use for experimentation or analysis.
-- Libraries to install using pip include 'opencv_python', 'numpy' and 'scikit-image' ('os' and 'python-dotenv', if not already pre-installed with your python version)
+- Libraries to install using pip include 'opencv_python', 'numpy', 'svgwrite' and 'scikit-image' ('os' and 'python-dotenv', if not already pre-installed with your python version)
 
 ## Contact
 
-For any questions or issues, please contact [sotydagz@gmail.com].
+For any questions or issues, please contact [Sotonye Dagogo](sotydagz@gmail.com).
