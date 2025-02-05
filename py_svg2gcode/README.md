@@ -37,5 +37,5 @@ This method is useful for debugging as it gives you extra information.
 ## Details
 The compiler is based on the eggbot project and it basically converts all of the SVG shapes into bezier curves. The bezier curves are then recursively sub divided until desired smoothness is achieved. The sub curves are then approximated as lines which are then converted into g-code.
 
-## Changes made by this Developer
+## Changes made by this Developer, [Sotonye Dagogo](https://github.com/Sotonye0808)
 The svg2gcode.py and other files were modified with OOP principles to enable calling of the methods in other python scripts as opposed to just command-line usage.
