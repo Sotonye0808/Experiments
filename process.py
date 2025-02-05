@@ -1,14 +1,16 @@
+# To be deprecated or refactored to main.py using OOP principles. Mostly due to discovery of open-source integratable signature pad that can save in PNG, JPG and most importantly, SVG
+# method for processing signature images can still be used to convert image of expected signature to cleaner form to compare the signature pad output to the expected signature
+
 import cv2
 import os
-import svgwrite
 import numpy as np
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-dir = os.getenv("DIR")
+common_dir = os.getenv("COMMON_DIR")
 
-def process_signature(image_path, output_path_png, output_path_svg):
+def process_signature(image_path, output_path_png):
     try:
         # Read image
         img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
@@ -59,29 +61,11 @@ def process_signature(image_path, output_path_png, output_path_svg):
         # Enhance details
         kernel = np.ones((2,2), np.uint8)
         result = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-
-        # Generate clean SVG
-        contours, _ = cv2.findContours(result, cv2.RETR_EXTERNAL, 
-                                     cv2.CHAIN_APPROX_SIMPLE)
-        
-        dwg = svgwrite.Drawing(output_path_svg, profile='tiny')
-        
-        for cnt in contours:
-            if cv2.contourArea(cnt) > 10:  # Preserve smaller details
-                points = cnt.squeeze().tolist()
-                if len(np.array(points).shape) == 2:
-                    path_data = f"M {points[0][0]},{points[0][1]}"
-                    for x, y in points[1:]:
-                        path_data += f" L {x},{y}"
-                    path_data += " Z"
-                    dwg.add(dwg.path(d=path_data, fill='black'))
-        
-        dwg.save()
         
         # Save processed PNG
         cv2.imwrite(output_path_png, result)
         
-        return output_path_png, output_path_svg
+        return output_path_png
 
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -90,9 +74,8 @@ def process_signature(image_path, output_path_png, output_path_svg):
     
 if __name__ == "__main__":
     shared_dir = f"{dir}/testing_images"
-    input_path = f"{shared_dir}/unclean_sample.jpg"
-    output_png = f"{shared_dir}/clean_sample.png"
-    output_svg = f"{shared_dir}/clean_sample.svg"
-    png_path, svg_path = process_signature(input_path, output_png, output_svg)
-    if png_path and svg_path:
-        print(f"Processed signature saved as:\nPNG: {png_path}\nSVG: {svg_path}")
+    input_path = f"{shared_dir}/signature.jpg"
+    output_png = f"{shared_dir}/signature.png"
+    png_path, svg_path = process_signature(input_path, output_png)
+    if png_path:
+        print(f"Processed signature saved as:\nPNG: {png_path}")

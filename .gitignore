@@ -3,3 +3,4 @@
 *.jpeg
 *.svg
 .env
+/gcode_experiments

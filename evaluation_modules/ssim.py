@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-dir = os.getenv("DIR")
+common_dir = os.getenv("COMMON_DIR")
 
 def compute_ssim(original_path=None, reproduced_path=None, original_image=None, reproduced_image=None):
     try:
@@ -40,8 +40,8 @@ SSIM close to 0 → Low similarity
 # Experimental usage
 if __name__ == "__main__":
     shared_dir = f"{dir}/testing_images"
-    orig_path = f"{shared_dir}/unclean_sample.jpg"
-    rep_path = f"{shared_dir}/clean_sample.png"
+    orig_path = f"{shared_dir}/signature.jpg"
+    rep_path = f"{shared_dir}/signature.png"
     # using paths
     result = compute_ssim(orig_path, rep_path)
     print(f"SSIM Score: {result:.4f}")

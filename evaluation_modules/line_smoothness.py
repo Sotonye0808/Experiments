@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-dir = os.getenv("DIR")
+common_dir = os.getenv("COMMON_DIR")
 
 def smoothness_test(image_path):
     try:
@@ -65,6 +65,6 @@ def smoothness_test(image_path):
         return 0.0
 
 if __name__ == "__main__":
-    input_path = f"{dir}/testing_images/clean_sample.png"
+    input_path = f"{dir}/testing_images/signature.jpg"
     score = smoothness_test(input_path)
     print(f"Line Smoothness Score: {score:.4f}")
