@@ -34,7 +34,10 @@ class SVGConverter:
         The main method that converts svg files into gcode files.
 
         Args:
-            filename: The full path to the SVG file to be converted. 'path/to/file.svg'        
+            filename: The full path to the SVG file to be converted. 'path/to/file.svg'      
+
+        Returns:
+            gcode: The gcode equivalent of the SVG file inputed.  
         """
         self.log = ""
         

@@ -26,7 +26,7 @@ def convert_svg_to_gcode(svg_file_path):
     os.makedirs(output_dir, exist_ok=True)
     
     # Generate output filename with timestamp
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") #may use later, or may effect in frontend for database storage
     filename = os.path.splitext(os.path.basename(svg_file_path))[0]
     output_path = os.path.join(output_dir, f"{filename}.gcode")
     
